@@ -20,7 +20,20 @@ esphome:
     - https://github.com/RobTillaart/ACS712.git
   includes:
     - acs712_component.h
-  
+    
+sensor:
+  - platform: custom
+    lambda: |-
+      auto acs712_sensor = new ACS712Sensor();
+      App.register_component(acs712_sensor);
+      return {acs712_sensor->current_sensor, acs712_sensor->power_sensor};
+    sensors:
+    - name: "Amperes"
+      unit_of_measurement: A
+      accuracy_decimals: 2
+    - name: "Watts"
+      unit_of_measurement: W
+      accuracy_decimals: 2
 ```
 
 
