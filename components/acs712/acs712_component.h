@@ -3,6 +3,9 @@
 
 #include "ACS712.h"
 #include "esphome.h"
+#include "esphome/core/component.h"       // Contiene la definición de PollingComponent
+#include "esphome/components/sensor/sensor.h"  // Contiene la definición de sensor::Sensor
+
 
 namespace esphome {
 namespace acs712 {
