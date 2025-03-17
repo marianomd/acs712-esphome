@@ -6,6 +6,13 @@ from esphome.const import (
     ICON_CURRENT_AC, ICON_FLASH, DEVICE_CLASS_CURRENT, DEVICE_CLASS_POWER
 )
 
+# Agregamos la dependencia a la biblioteca ACS712
+cg.add_library(
+    name="ACS712",
+    github="https://github.com/RobTillaart/ACS712.git",
+    version=">=0.3.0"
+)
+
 DEPENDENCIES = []
 #MULTI_CONF = True
 
