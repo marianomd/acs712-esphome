@@ -14,26 +14,25 @@ Example yaml fragment:
 
 ```
 esphome:
-  name: tanque-agua
-  friendly_name: tanque-agua
-  libraries:
-    - https://github.com/RobTillaart/ACS712.git
-  includes:
-    - acs712_component.h
-    
+  name: tanque_agua
+
+external_components:
+  - source:
+      type: git
+      url: https://github.com/marianomd/acs712-esphome
+    components: [acs712]
+
 sensor:
-  - platform: custom
-    lambda: |-
-      auto acs712_sensor = new ACS712Sensor();
-      App.register_component(acs712_sensor);
-      return {acs712_sensor->current_sensor, acs712_sensor->power_sensor};
-    sensors:
-    - name: "Amperes"
-      unit_of_measurement: A
-      accuracy_decimals: 2
-    - name: "Watts"
-      unit_of_measurement: W
-      accuracy_decimals: 2
+  - platform: acs712
+    id: acs712_sensor
+    pin: A0
+    voltage: 3.3
+    adc_bits: 1023
+    mv_per_amp: 66
+    line_voltage: 220
+    noisemV: 43
+
+
 ```
 
 

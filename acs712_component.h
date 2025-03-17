@@ -1,34 +1,34 @@
+#ifndef ACS712_COMPONENT_H
+#define ACS712_COMPONENT_H
+
+#include "esphome.h"
 #include "ACS712.h"
 
+namespace esphome {
+namespace acs712_component {
+
 class ACS712Sensor : public PollingComponent {
-   public:
-    ACS712 *ACS = new ACS712(A0, 3.3, 1023, 66);
-    Sensor *current_sensor = new Sensor();
-    Sensor *power_sensor = new Sensor();
+ public:
+  ACS712Sensor(uint8_t pin, float voltage, uint16_t adc_bits, float mV_per_amp, float line_voltage)
+      : PollingComponent(15000),
+        acs_(pin, voltage, adc_bits, mV_per_amp),
+        line_voltage_(line_voltage) {}
 
-    ACS712Sensor() : PollingComponent(15000) {}
+  void setup() override;
+  void update() override;
 
-    void setup() override {
-        ACS->autoMidPoint();
-        ESP_LOGD("acs712", "MidPoint: %d", ACS->getMidPoint());
-        ACS->setNoisemV(43);
-        ESP_LOGD("acs712", "Noise mV: %d", ACS->getNoisemV());
-    }
+  void set_noisemV(float noisemV) { acs_.setNoisemV(noisemV); }
+  void set_mid_point(uint16_t mid_point) { acs_.setMidPoint(mid_point); }
 
-    void update() override {
-        float average = 0;
-        //uint32_t start = millis();
-        int count = 5;
-        for (int i = 0; i < count; i++) {
-            average += ACS->mA_AC();
-        }
-        float amps = average / count / 1000.0;
-        // float mA = ACS.mA_AC(50,10);
-        //uint32_t duration = millis() - start;
+  Sensor *current_sensor = new Sensor();
+  Sensor *power_sensor = new Sensor();
 
-        //ESP_LOGD("acs712", "Time: %d A: ", duration, amps);
-
-        current_sensor->publish_state(amps);
-        power_sensor->publish_state(amps * 220);
-    }
+ private:
+  ACS712 acs_;
+  float line_voltage_;
 };
+
+}  // namespace acs712_component
+}  // namespace esphome
+
+#endif
