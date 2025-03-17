@@ -13,8 +13,8 @@ class ACS712Sensor : public PollingComponent {
       : PollingComponent(15000),
         acs_(pin, voltage, adc_bits, mV_per_amp),
         line_voltage_(line_voltage),
-        current_sensor_(nullptr),
-        power_sensor_(nullptr) {}
+        current_sensor(nullptr),
+        power_sensor(nullptr) {}
 
   void setup() override;
   void update() override;
