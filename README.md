@@ -2,9 +2,7 @@
 
 This is based on https://github.com/RobTillaart/ACS712
 
-~~The code is working on ESP and ACS712-30A.~~
-
-**Current version is WIP. Converting to external component. Not working yet.**
+The code is working on ESP and ACS712-30A.
 
 Have in mind that without voltage divider on the ADC pin a 30A model will measure up to 20A.
 
