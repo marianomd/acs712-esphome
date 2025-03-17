@@ -9,7 +9,7 @@ from esphome.const import (
 # Agregamos la dependencia a la biblioteca ACS712
 cg.add_library(
     name="ACS712",
-    github="https://github.com/RobTillaart/ACS712.git",
+    url="https://github.com/RobTillaart/ACS712.git",
     version=">=0.3.0"
 )
 
