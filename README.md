@@ -25,7 +25,7 @@ external_components:
 sensor:
   - platform: acs712
     id: acs712_sensor
-    pin: A0
+    pin: 0
     voltage: 3.3
     adc_bits: 1023
     mv_per_amp: 66

@@ -1,7 +1,7 @@
 #include "acs712_component.h"
 
 namespace esphome {
-namespace acs712_component {
+namespace acs712 {
 
 void ACS712Sensor::setup() {
   acs_.autoMidPoint();
@@ -19,5 +19,5 @@ void ACS712Sensor::update() {
   power_sensor->publish_state(amps * line_voltage_);
 }
 
-}  // namespace acs712_component
+}  // namespace acs712
 }  // namespace esphome

@@ -15,7 +15,8 @@ CONF_LINE_VOLTAGE = 'line_voltage'
 CONF_NOISE_MV = 'noisemV'
 CONF_MID_POINT = 'mid_point'
 
-acs712_ns = cg.esphome_ns.namespace('acs712_component')
+# Se cambia el namespace a 'acs712' para evitar conflictos en el dominio
+acs712_ns = cg.esphome_ns.namespace('acs712')
 ACS712Sensor = acs712_ns.class_('ACS712Sensor', cg.PollingComponent)
 
 CONFIG_SCHEMA = cv.Schema({

@@ -5,7 +5,7 @@
 #include "ACS712.h"
 
 namespace esphome {
-namespace acs712_component {
+namespace acs712 {
 
 class ACS712Sensor : public PollingComponent {
  public:
@@ -28,7 +28,7 @@ class ACS712Sensor : public PollingComponent {
   float line_voltage_;
 };
 
-}  // namespace acs712_component
+}  // namespace acs712
 }  // namespace esphome
 
 #endif
