@@ -12,7 +12,9 @@ class ACS712Sensor : public PollingComponent {
   ACS712Sensor(uint8_t pin, float voltage, uint16_t adc_bits, float mV_per_amp, float line_voltage)
       : PollingComponent(15000),
         acs_(pin, voltage, adc_bits, mV_per_amp),
-        line_voltage_(line_voltage) {}
+        line_voltage_(line_voltage),
+        current_sensor_(nullptr),
+        power_sensor_(nullptr) {}
 
   void setup() override;
   void update() override;
@@ -20,8 +22,13 @@ class ACS712Sensor : public PollingComponent {
   void set_noisemV(float noisemV) { acs_.setNoisemV(noisemV); }
   void set_mid_point(uint16_t mid_point) { acs_.setMidPoint(mid_point); }
 
-  Sensor *current_sensor = new Sensor();
-  Sensor *power_sensor = new Sensor();
+  // Nuevos setters para los sensores configurados desde YAML
+  void set_current_sensor(sensor::Sensor *sensor) { current_sensor_ = sensor; }
+  void set_power_sensor(sensor::Sensor *sensor) { power_sensor_ = sensor; }
+
+ protected:
+  sensor::Sensor *current_sensor_;
+  sensor::Sensor *power_sensor_;
 
  private:
   ACS712 acs_;
