@@ -24,13 +24,16 @@ external_components:
 
 sensor:
   - platform: acs712
-    id: acs712_sensor
     pin: 0
     voltage: 3.3
     adc_bits: 1023
     mv_per_amp: 66
     line_voltage: 220
     noisemV: 43
+    current_sensor:
+      name: "Amperes"
+    power_sensor:
+      name: "Watts"
 
 
 ```
