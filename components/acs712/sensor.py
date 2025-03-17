@@ -7,7 +7,7 @@ from esphome.const import (
 )
 
 DEPENDENCIES = []
-MULTI_CONF = True
+#MULTI_CONF = True
 
 # Nombres de los nuevos campos para los sensores hijos
 CONF_CURRENT_SENSOR = "current_sensor"
