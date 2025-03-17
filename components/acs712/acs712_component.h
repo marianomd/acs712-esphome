@@ -23,12 +23,12 @@ class ACS712Sensor : public PollingComponent {
   void set_mid_point(uint16_t mid_point) { acs_.setMidPoint(mid_point); }
 
   // Nuevos setters para los sensores configurados desde YAML
-  void set_current_sensor(sensor::Sensor *sensor) { current_sensor_ = sensor; }
-  void set_power_sensor(sensor::Sensor *sensor) { power_sensor_ = sensor; }
+  void set_current_sensor(sensor::Sensor *sensor) { current_sensor = sensor; }
+  void set_power_sensor(sensor::Sensor *sensor) { power_sensor = sensor; }
 
  protected:
-  sensor::Sensor *current_sensor_;
-  sensor::Sensor *power_sensor_;
+  sensor::Sensor *current_sensor;
+  sensor::Sensor *power_sensor;
 
  private:
   ACS712 acs_;
