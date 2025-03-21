@@ -10,7 +10,7 @@ void ACS712Sensor::setup() {
 
 void ACS712Sensor::update() {
   float average = 0;
-  int count = 5;
+  int count = 3;
   for (int i = 0; i < count; i++) {
     average += acs_.mA_AC();
   }
