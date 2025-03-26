@@ -13,7 +13,7 @@ namespace acs712 {
 class ACS712Sensor : public PollingComponent {
    public:
     ACS712Sensor(uint8_t pin, float voltage, uint16_t adc_bits, float mV_per_amp, float line_voltage)
-        : PollingComponent(15000),
+        : PollingComponent(10000),
           acs_(pin, voltage, adc_bits, mV_per_amp),
           line_voltage_(line_voltage),
           current_sensor(nullptr),
